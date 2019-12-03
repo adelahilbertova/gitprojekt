@@ -1,16 +1,15 @@
 
-#include "pch.h"
+//#include "pch.h"
 #include <stdio.h>
 
 void n(char x[1000]) {
 	FILE *fr;
 	int i, pocet = 0;
 	char c;
-	errno_t err = fopen_s(&fr, "sifra.txt", "r");
-	//fr = fopen("sifra.txt", "r");
-	i = 0;
+//	errno_t err = fopen_s(&fr, "sifra.txt", "r");
+	fr = fopen("sifra.txt", "r");
 	if (fr == NULL) {
-		printf("Spravu sa nepodarilo nacitat");
+		printf("Spravu sa nepodarilo nacitat.");
 	}
 	while ((c = getc(fr)) != EOF) {
 		pocet++;
@@ -20,14 +19,13 @@ void n(char x[1000]) {
 		c = getc(fr);
 		x[i] = c;
 	}
-
 	x[pocet] = '\0';
 	fclose(fr);
 }
 
 void v(char x[1000]) {
-	int i, pocet = 0;
-	i = 0;
+	int i=0, pocet = 0;
+
 	while (x[i] != '\0') {
 		pocet++;
 		i++;
@@ -43,16 +41,14 @@ void v(char x[1000]) {
 
 void u(char x[1000], char b[1000]) {
 	int i = 0, t = 0;
+
 	while (x[i] != '\0') {
 		if ((x[i] >= 'a' && x[i] <= 'z') || (x[i] >= 'A' && x[i] <= 'Z')) {
 			if (x[i] >= 'a' && x[i] <= 'z') {
 				b[t] = x[i] - 32;
-			}
-			else
-			{
-				b[t] = x[i];
-			}
-			t++;
+                }else
+                    b[t] = x[i];
+            t++;
 		}
 		i++;
 	}
@@ -60,12 +56,10 @@ void u(char x[1000], char b[1000]) {
 	if (i == 0) {
 		printf("Sprava nieje nacitana\n");
 	}
-
 }
 void s(char y[1000]) {
-	int i, w;
-	i = 0;
-	w = 0;
+	int i=0, w=0;
+
 	while (y[i] != '\0') {
 		printf("%c", y[i]);
 		i++;
@@ -76,14 +70,13 @@ void s(char y[1000]) {
 		return;
 	}
 	printf("\n");
-
 }
 
 void d(char x[1000]) {
 	int k, o, i = 0, pozicia = 0, pocetpismen = 0;
 	char y[1000];
-	//scanf("%d", &k);
-	scanf_s("%d", &k);
+	scanf("%d", &k);
+//	scanf_s("%d", &k);
 	if (x[i] == '\0') {
 		printf("Sprava nie je nacitana\n");
 		return;
@@ -117,8 +110,8 @@ void c(char x[1000]) {
 	int i, n, pocet=0;
 	char y[1000];
 	i = 0;
-	//scanf("%d", &n);
-	scanf_s("%d", &n);
+	scanf("%d", &n);
+//	scanf_s("%d", &n);
 	while (x[i] != '\0') {
             pocet++;
 		if (x[i] - n <= 'Z' && x[i] - n >= 'A') {
@@ -208,8 +201,8 @@ void h(char x[1000]) {
 int main()
 {
 	char o, povodnytext[1000]={}, upravenytext[1000]={};
-	//scanf("%c", &o);
-	scanf_s("%c", &o);
+	scanf("%c", &o);
+//	scanf_s("%c", &o);
 	while (o != 'k') {
 		if (o == 'n') {
 			n(povodnytext);
@@ -232,8 +225,8 @@ int main()
 		else if (o == 'h') {
 			h(upravenytext);
 		}
-		//scanf("%c", &o);
-		scanf_s("%c", &o);
+		scanf("%c", &o);
+//		scanf_s("%c", &o);
 	}
 
 }
