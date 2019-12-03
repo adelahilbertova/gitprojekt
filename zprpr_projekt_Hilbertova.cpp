@@ -73,10 +73,11 @@ void s(char y[1000]) {
 }
 
 void d(char x[1000]) {
-	int k, o, i = 0, pozicia = 0, pocetpismen = 0;
+	int nacitanep, o, i = 0, pozicia = 0, pocetpismen = 0;
 	char y[1000];
-	scanf("%d", &k);
-//	scanf_s("%d", &k);
+
+	scanf("%d", &nacitanep);
+//	scanf_s("%d", &nacitanep);
 	if (x[i] == '\0') {
 		printf("Sprava nie je nacitana\n");
 		return;
@@ -88,8 +89,8 @@ void d(char x[1000]) {
 			pocetpismen++;
 			i++;
 		}
-		if (pocetpismen == k) {
-			for (o = pozicia - k; o < pozicia; o++) {
+		if (pocetpismen == nacitanep) {
+			for (o = pozicia - nacitanep; o < pozicia; o++) {
 				printf("%c", y[o]);
 			}printf(" ");
 		}
@@ -101,25 +102,24 @@ void d(char x[1000]) {
 		i++;
 		pocetpismen = 0;
 	}
-
 	printf("\n");
 	return;
 }
 
 void c(char x[1000]) {
-	int i, n, pocet=0;
+	int i, nacitanep, pocet=0;
 	char y[1000];
 	i = 0;
-	scanf("%d", &n);
-//	scanf_s("%d", &n);
+	scanf("%d", &nacitanep);
+//	scanf_s("%d", &nacitanep);
 	while (x[i] != '\0') {
             pocet++;
-		if (x[i] - n <= 'Z' && x[i] - n >= 'A') {
-			y[i] =x[i]-n;
+		if (x[i] - nacitanep <= 'Z' && x[i] - nacitanep >= 'A') {
+			y[i] =x[i]-nacitanep;
 			printf("%c", y[i]);
 		}
-		else if (x[i] - n < 'A') {
-			y[i] = x[i] - n;
+		else if (x[i] - nacitanep < 'A') {
+			y[i] = x[i] - nacitanep;
 			printf("%c", y[i] + 26);
 		}
 		i++;
@@ -181,7 +181,6 @@ void h(char x[1000]) {
 		}
 		empty = 0;
 	}
-
 	for (m = 0;m <= n;m++) {
 		if (y[m] > 0) {
 			printf("*");
@@ -195,8 +194,6 @@ void h(char x[1000]) {
 	}
 	printf("\n");
 }
-
-
 
 int main()
 {
