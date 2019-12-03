@@ -200,33 +200,21 @@ void h(char x[1000]) {
 
 int main()
 {
-	char o, povodnytext[1000]={}, upravenytext[1000]={};
-	scanf("%c", &o);
+	char nacitanep, povodnytext[1000]={}, upravenytext[1000]={};
+	scanf("%c", &nacitanep);
 //	scanf_s("%c", &o);
-	while (o != 'k') {
-		if (o == 'n') {
-			n(povodnytext);
-		}
-		else if (o == 'v') {
-			v(povodnytext);
-		}
-		else if (o == 'u') {
-			u(povodnytext, upravenytext);
-		}
-		else if (o == 's') {
-			s(upravenytext);
-		}
-		else if (o == 'd') {
-			d(povodnytext);
-		}
-		else if (o == 'c') {
-			c(upravenytext);
-		}
-		else if (o == 'h') {
-			h(upravenytext);
-		}
-		scanf("%c", &o);
+	while (nacitanep != 'k') {
+            switch (nacitanep){
+        case 'n':n(povodnytext);break;
+        case 'v':v(povodnytext); break;
+        case 'u':u(povodnytext, upravenytext); break;
+        case 's':s(upravenytext); break;
+        case 'd':d(povodnytext); break;
+        case 'c':c(upravenytext); break;
+        case 'h':h(upravenytext); break;
+            }
+		scanf("%c", &nacitanep);}
 //		scanf_s("%c", &o);
 	}
 
-}
+
