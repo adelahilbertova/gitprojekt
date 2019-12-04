@@ -2,7 +2,7 @@
 //#include "pch.h"
 #include <stdio.h>
 
-void n(char x[1000]) {
+void nacitanie_spravy(char x[1000]) {
 	FILE *fr;
 	int i, pocet = 0;
 	char c;
@@ -23,7 +23,7 @@ void n(char x[1000]) {
 	fclose(fr);
 }
 
-void v(char x[1000]) {
+void vypis_spravy(char x[1000]) {
 	int i=0, pocet = 0;
 
 	while (x[i] != '\0') {
@@ -39,7 +39,7 @@ void v(char x[1000]) {
 	printf("\n");
 }
 
-void u(char x[1000], char b[1000]) {
+void upravit_spravu(char x[1000], char b[1000]) {
 	int i = 0, t = 0;
 
 	while (x[i] != '\0') {
@@ -57,7 +57,7 @@ void u(char x[1000], char b[1000]) {
 		printf("Sprava nieje nacitana\n");
 	}
 }
-void s(char y[1000]) {
+void vypis_upravenej_spravy(char y[1000]) {
 	int i=0, w=0;
 
 	while (y[i] != '\0') {
@@ -72,7 +72,7 @@ void s(char y[1000]) {
 	printf("\n");
 }
 
-void d(char x[1000]) {
+void vypis_slov_danej_dlzky(char x[1000]) {
 	int nacitanep, o, i = 0, pozicia = 0, pocetpismen = 0;
 	char y[1000];
 
@@ -106,7 +106,7 @@ void d(char x[1000]) {
 	return;
 }
 
-void c(char x[1000]) {
+void zasifrovana_sprava(char x[1000]) {
 	int i, nacitanep, pocet=0;
 	char y[1000];
 	i = 0;
@@ -130,7 +130,7 @@ void c(char x[1000]) {
 	printf("\n");
 }
 
-void h(char x[1000]) {
+void histogram(char x[1000]) {
 	int y[1000];
 	int i = 0, z = 0, n, f = 0, k, h, r = 0, d = 0, empty = 0, w, j = 0, m=0;
 	float percento = 0, pocet = 0, u = 0;
@@ -202,13 +202,13 @@ int main()
 //	scanf_s("%c", &o);
 	while (nacitanep != 'k') {
             switch (nacitanep){
-        case 'n':n(povodnytext);break;
-        case 'v':v(povodnytext); break;
-        case 'u':u(povodnytext, upravenytext); break;
-        case 's':s(upravenytext); break;
-        case 'd':d(povodnytext); break;
-        case 'c':c(upravenytext); break;
-        case 'h':h(upravenytext); break;
+        case 'n':nacitanie_spravy(povodnytext);break;
+        case 'v':vypis_spravy(povodnytext); break;
+        case 'u':upravit_spravu(povodnytext, upravenytext); break;
+        case 's':vypis_upravenej_spravy(upravenytext); break;
+        case 'd':vypis_slov_danej_dlzky(povodnytext); break;
+        case 'c':zasifrovana_sprava(upravenytext); break;
+        case 'h':histogram(upravenytext); break;
             }
 		scanf("%c", &nacitanep);}
 //		scanf_s("%c", &o);
