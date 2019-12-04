@@ -107,9 +107,9 @@ void vypis_slov_danej_dlzky(char x[1000]) {
 }
 
 void zasifrovana_sprava(char x[1000]) {
-	int i, nacitanep, pocet=0;
+	int i=0, nacitanep, pocet=0;
 	char y[1000];
-	i = 0;
+
 	scanf("%d", &nacitanep);
 //	scanf_s("%d", &nacitanep);
 	while (x[i] != '\0') {
@@ -131,7 +131,7 @@ void zasifrovana_sprava(char x[1000]) {
 }
 
 void histogram(char x[1000]) {
-	int i = 0, z = 0, pocetpismenabc, f = 0, k, h, r = 0, empty = 0, w, j = 0, m=0, y[1000];
+	int i = 0, z = 0, pocetpismenabc, f = 0, k, h, r = 0, prazdne = 0, w, j = 0, m=0, y[1000];
 	float percento = 0, pocet_pismen_upravenej_spravy = 0, u = 0;
 
 	if (x[0] == '\0') {
@@ -159,11 +159,11 @@ void histogram(char x[1000]) {
 			if (y[w] != 0) {
 				j = (y[w] / pocet_pismen_upravenej_spravy * 100);
 				if (j > percento) {
-					empty = 1;
+					prazdne = 1;
 				}
 			}
 		}
-		if (empty != 0) {
+		if (prazdne != 0) {
 		for (h = 0;h <= pocetpismenabc;h++) {
 				u = (y[h] / pocet_pismen_upravenej_spravy * 100);
 				if (u >= percento) {
@@ -174,7 +174,7 @@ void histogram(char x[1000]) {
 				}
 			}printf("\n");
 		}
-		empty = 0;
+		prazdne = 0;
 	}
 	for (m = 0;m <= pocetpismenabc;m++) {
 		if (y[m] > 0) {
@@ -187,6 +187,24 @@ void histogram(char x[1000]) {
 		printf("%c", 'A' + k);
 	}
 	printf("\n");
+}
+void pomer_velkych_malych_pismen(char x[1000]){
+int pocetp=0, pocetnp=0, i=0;
+if (x[0]=='\0') {
+		printf("Sprava nie je nacitana\n");
+		return;
+	}
+
+while(x[i] != '\0'){
+if ((x[i] >= 'a' && x[i] <= 'z') || (x[i] >= 'A' && x[i] <= 'Z')){
+  pocetp++;
+  i++;
+}else
+ {pocetnp++;
+i++;}
+
+}
+printf("%d:%d\n", pocetp, pocetnp);
 }
 
 int main()
@@ -203,8 +221,10 @@ int main()
         case 'd':vypis_slov_danej_dlzky(povodnytext); break;
         case 'c':zasifrovana_sprava(upravenytext); break;
         case 'h':histogram(upravenytext); break;
+        case 'p':pomer_velkych_malych_pismen(upravenytext);break;
             }
-		scanf("%c", &nacitanep);}
+		scanf("%c", &nacitanep);
+    }
 //		scanf_s("%c", &nacitanep);
 	}
 
