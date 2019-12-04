@@ -131,25 +131,22 @@ void zasifrovana_sprava(char x[1000]) {
 }
 
 void histogram(char x[1000]) {
-	int y[1000];
-	int i = 0, z = 0, n, f = 0, k, h, r = 0, d = 0, empty = 0, w, j = 0, m=0;
-	float percento = 0, pocet = 0, u = 0;
-	if (x[d] == '\0') {
+	int i = 0, z = 0, pocetpismenabc, f = 0, k, h, r = 0, empty = 0, w, j = 0, m=0, y[1000];
+	float percento = 0, pocet_pismen_upravenej_spravy = 0, u = 0;
+
+	if (x[0] == '\0') {
 		printf("Nie je k dispozicii upravena sprava\n");
 		return;
 	}
-	n = 'Z' - 'A' + 1;
-
-	for (i = 0; i <= n; i++) {
+	pocetpismenabc = 'Z' - 'A' + 1;
+	for (i = 0; i <= pocetpismenabc; i++) {
 		y[i] = 0;
 	}
 	while (x[r] != '\0') {
-		pocet++;
+		pocet_pismen_upravenej_spravy++;
 		r++;
 	}
-	//pocet -= 2;
-	//printf("pocet: %.0lf\n", pocet);
-	for (z = 0;z <= pocet;z++) {
+	for (z = 0;z <= pocet_pismen_upravenej_spravy;z++) {
 		f = x[z] - 'A';
 		y[f]++;
 	}
@@ -158,38 +155,35 @@ void histogram(char x[1000]) {
 		if (percento == 0) {
 			break;
 		}
-		for (w = 0;w <= n;w++) {
+		for (w = 0;w <= pocetpismenabc;w++) {
 			if (y[w] != 0) {
-				j = (y[w] / pocet * 100);
+				j = (y[w] / pocet_pismen_upravenej_spravy * 100);
 				if (j > percento) {
 					empty = 1;
 				}
 			}
 		}
-		//printf("%.0lf%%:   ", percento);
 		if (empty != 0) {
-		for (h = 0;h <= n;h++) {
-				u = (y[h] / pocet * 100);
+		for (h = 0;h <= pocetpismenabc;h++) {
+				u = (y[h] / pocet_pismen_upravenej_spravy * 100);
 				if (u >= percento) {
 					printf("*");
 				}
 				else {
 					printf(" ");
 				}
-
 			}printf("\n");
 		}
 		empty = 0;
 	}
-	for (m = 0;m <= n;m++) {
+	for (m = 0;m <= pocetpismenabc;m++) {
 		if (y[m] > 0) {
 			printf("*");
 		}
 		else printf(" ");
 	}
 	printf("\n");
-	//printf("      ");
-	for (k = 0;k < 26;k++) {
+	for (k = 0;k < pocetpismenabc;k++) {
 		printf("%c", 'A' + k);
 	}
 	printf("\n");
@@ -199,7 +193,7 @@ int main()
 {
 	char nacitanep, povodnytext[1000]={}, upravenytext[1000]={};
 	scanf("%c", &nacitanep);
-//	scanf_s("%c", &o);
+//	scanf_s("%c", &nacitanep);
 	while (nacitanep != 'k') {
             switch (nacitanep){
         case 'n':nacitanie_spravy(povodnytext);break;
@@ -211,7 +205,7 @@ int main()
         case 'h':histogram(upravenytext); break;
             }
 		scanf("%c", &nacitanep);}
-//		scanf_s("%c", &o);
+//		scanf_s("%c", &nacitanep);
 	}
 
 
